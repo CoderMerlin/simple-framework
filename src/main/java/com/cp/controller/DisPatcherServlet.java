@@ -30,7 +30,7 @@ public class DisPatcherServlet extends HttpServlet {
         log.info("获取请求路径：{}",req.getServletPath());
 
         log.info("获取请求方法：{}",req.getMethod());
-        //根据请求的路径和方法，选择合适的Controller进行处理
+        //根据请求的路径和方法，选择合适的Controller进行处理   //思考：这种写法是不是可以改造呢？
         if(req.getServletPath() == "frontend/getMainPageInfo" && req.getMethod() == "GET"){
             new MainPageController().getMainPageInfo(req,resp);
         } else if(req.getServletPath() == "superadmin/addHeadLine" && req.getMethod() == "POST"){

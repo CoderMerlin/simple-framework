@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class GenericDemo {
 
-    public static void handlerMember(GenericClassExample<? super Integer> integerGenericClassExample){
+    public static void handlerMember(GenericClassExample<? extends Number> integerGenericClassExample){
         Integer result = (Integer) integerGenericClassExample.getMember() + 2;
         log.info("result is: {}",result);
     }
