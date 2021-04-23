@@ -6,19 +6,19 @@ import java.lang.reflect.Method;
 
 /**
  * @author Coder编程
- * @Title: TestAnnotion
+ * @Title: TestAnnotation
  * @ProjectName simple-framework
  * @Description: TODO
  * @date 2021/4/22 14:20
  */
-@MyAnTargetType
+@MyAnnotationType
 public class TestAnnotation {
 
-    @MyAnTargetField
+    @MyAnnotationField(type = 1)
     private String field = "我是字段";
 
-    @MyAnTargetMethod("测试方法")
-    public void methodTest(@MyAnTargetParameter("测试参数")String str){
+    @MyAnnotationMethod("测试方法")
+    public void methodTest(@MyAnnotationParameter("测试参数")String str){
         System.out.println("我是测试方法,Str = " + str);
     }
 
@@ -28,7 +28,7 @@ public class TestAnnotation {
      */
     public static void parseTypeAnnotation() throws ClassNotFoundException {
         //获取类上的注解
-        MyAnTargetType annotation = TestAnnotation.class.getAnnotation(MyAnTargetType.class);
+        MyAnnotationType annotation = TestAnnotation.class.getAnnotation(MyAnnotationType.class);
         System.out.println("类上注解"+annotation);
 
         //另外一种方法
@@ -36,8 +36,8 @@ public class TestAnnotation {
         /*获取到类上的所有注解，只在类上，不包括成员，方法上的注解*/
         Annotation[] annotations = clazz.getAnnotations();
         for (Annotation annotation1 : annotations) {
-            MyAnTargetType myAnTargetType = (MyAnTargetType)annotation1;
-            System.out.println(myAnTargetType.value());
+            MyAnnotationType myAnnotationType = (MyAnnotationType)annotation1;
+            System.out.println(myAnnotationType.value());
         }
     }
 
@@ -50,25 +50,30 @@ public class TestAnnotation {
         Field[] declaredFields = clazz.getDeclaredFields();
         for (Field declaredField : declaredFields) {
             //判断成员变量中是否有指定注解类型的注解
-            boolean hasAnnotation = declaredField.isAnnotationPresent(MyAnTargetField.class);
+            boolean hasAnnotation = declaredField.isAnnotationPresent(MyAnnotationField.class);
             if(hasAnnotation){
-                MyAnTargetField annotation = declaredField.getAnnotation(MyAnTargetField.class);
+                MyAnnotationField annotation = declaredField.getAnnotation(MyAnnotationField.class);
                 System.out.println(annotation.value());
             }
         }
     }
 
+    /**
+     * 获取方法，参数上的注解
+     * @throws ClassNotFoundException
+     * @throws NoSuchMethodException
+     */
     public static void parseMethodAnnotation() throws ClassNotFoundException, NoSuchMethodException {
         Class clazz = Class.forName("demo.annotation.TestAnnotation");
         Method methodTest = clazz.getDeclaredMethod("methodTest", String.class);
-        MyAnTargetMethod annotation = methodTest.getAnnotation(MyAnTargetMethod.class);
+        MyAnnotationMethod annotation = methodTest.getAnnotation(MyAnnotationMethod.class);
         System.out.println(annotation.value());
 
         Annotation[][] parameterAnnotations = methodTest.getParameterAnnotations();
         for (Annotation[] parameterAnnotation : parameterAnnotations) {
             for (Annotation annotation1 : parameterAnnotation) {
-                if(annotation1 instanceof MyAnTargetParameter){
-                    System.out.println("方法参数上的注解："+((MyAnTargetParameter) annotation1).value());
+                if(annotation1 instanceof MyAnnotationParameter){
+                    System.out.println("方法参数上的注解："+((MyAnnotationParameter) annotation1).value());
                 }
             }
         }
@@ -77,7 +82,7 @@ public class TestAnnotation {
 
     public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException {
         //parseTypeAnnotation();
-       // parseFieldAnnotation();
-        parseMethodAnnotation();
+        parseFieldAnnotation();
+        //parseMethodAnnotation();
     }
 }
