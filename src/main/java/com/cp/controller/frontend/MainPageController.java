@@ -3,6 +3,7 @@ package com.cp.controller.frontend;
 import com.cp.entity.DTO.MainPageInfoDTO;
 import com.cp.entity.DTO.Result;
 import com.cp.service.combine.HeadLineShopCategoryCombineService;
+import org.simpleframework.core.annotation.Controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  * @Description: TODO
  * @date 2021/4/16 18:14
  */
+@Controller
 public class MainPageController {
 
     private HeadLineShopCategoryCombineService headLineShopCategoryCombineService;

@@ -3,6 +3,7 @@ package com.cp.controller.superadmin;
 import com.cp.entity.DTO.Result;
 import com.cp.entity.bo.HeadLine;
 import com.cp.service.solo.HeadLineService;
+import org.simpleframework.core.annotation.Controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +16,7 @@ import java.util.List;
  * @Description: TODO
  * @date 2021/4/16 18:26
  */
+@Controller
 public class HeadLineOperationController {
 
     private HeadLineService headLineService;

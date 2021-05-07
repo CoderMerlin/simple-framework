@@ -11,7 +11,7 @@ import java.lang.reflect.Method;
  * @Description: TODO
  * @date 2021/4/22 14:20
  */
-@MyAnnotationType
+@MyAnnotationType("我是注解类")
 public class TestAnnotation {
 
     @MyAnnotationField(type = 1)
@@ -81,8 +81,8 @@ public class TestAnnotation {
 
 
     public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException {
-        //parseTypeAnnotation();
-        parseFieldAnnotation();
+        parseTypeAnnotation();
+       // parseFieldAnnotation();
         //parseMethodAnnotation();
     }
 }

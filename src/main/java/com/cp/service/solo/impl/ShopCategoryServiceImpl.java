@@ -4,6 +4,7 @@ import com.cp.entity.DTO.Result;
 import com.cp.entity.bo.HeadLine;
 import com.cp.entity.bo.ShopCategory;
 import com.cp.service.solo.ShopCategoryService;
+import org.simpleframework.core.annotation.Service;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ import java.util.List;
  * @Description: TODO
  * @date 2021/4/16 15:59
  */
+@Service
 public class ShopCategoryServiceImpl implements ShopCategoryService {
     @Override
     public Result<Boolean> addShopCategory(ShopCategory shopCategory) {
