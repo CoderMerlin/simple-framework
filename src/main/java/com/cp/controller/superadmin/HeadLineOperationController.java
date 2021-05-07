@@ -4,6 +4,7 @@ import com.cp.entity.DTO.Result;
 import com.cp.entity.bo.HeadLine;
 import com.cp.service.solo.HeadLineService;
 import org.simpleframework.core.annotation.Controller;
+import org.simpleframework.inject.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +20,7 @@ import java.util.List;
 @Controller
 public class HeadLineOperationController {
 
+    @Autowired
     private HeadLineService headLineService;
     /**
      * 添加
